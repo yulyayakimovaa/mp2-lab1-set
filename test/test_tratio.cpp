@@ -4,6 +4,7 @@
 
 TEST(TRatio, can_create_ratio_without_parameters)
 {
+  // Arrange & Act & Assert
   ASSERT_NO_THROW(TRatio r);
 }
 
