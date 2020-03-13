@@ -48,3 +48,33 @@ TEST(TRatio, new_ratio_is_zero)
   EXPECT_EQ(0, r.GetNumerator());
   EXPECT_EQ(1, r.GetDenominator());
 }
+
+TEST(TRatio, ratio_with_negative_parts_becomes_positive)
+{
+  // Arrange & Act
+  TRatio r(-1, -2);
+
+  // Assert
+  EXPECT_EQ(1, r.GetNumerator());
+  EXPECT_EQ(2, r.GetDenominator());
+}
+
+TEST(TRatio, ratio_with_another_negative_parts_becomes_positive)
+{
+  // Arrange & Act
+  TRatio r(-100500, -2);
+
+  // Assert
+  EXPECT_EQ(100500, r.GetNumerator());
+  EXPECT_EQ(2, r.GetDenominator());
+}
+
+TEST(TRatio, moves_minus_to_numerator)
+{
+  // Arrange & Act
+  TRatio r(1, -2);
+
+  // Assert
+  EXPECT_EQ(-1, r.GetNumerator());
+  EXPECT_EQ(2, r.GetDenominator());
+}
