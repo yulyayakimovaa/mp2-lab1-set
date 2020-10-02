@@ -5,14 +5,14 @@
 //
 // Битовое поле
 
-#ifndef __BITFIELD_H__
+#ifndef __BITFIELD_H__//pragma once
 #define __BITFIELD_H__
 
 #include <iostream>
 
 using namespace std;
 
-typedef unsigned int TELEM;
+typedef unsigned int TELEM;// тип элемента массива
 
 class TBitField
 {
@@ -31,8 +31,8 @@ public:
 
   // доступ к битам
   int GetLength(void) const;      // получить длину (к-во битов)           (#О)
-  void SetBit(const int n);       // установить бит                       (#О4)
-  void ClrBit(const int n);       // очистить бит                         (#П2)
+  void SetBit(const int n);       // установить бит     ставим 1                  (#О4)
+  void ClrBit(const int n);       // очистить бит       ставим 0                  (#П2)
   int  GetBit(const int n) const; // получить значение бита               (#Л1)
 
   // битовые операции
