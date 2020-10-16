@@ -7,7 +7,7 @@
 
 #include <iomanip>
 
-//#define USE_SET // Использовать класс TSet,
+#define USE_SET // Использовать класс TSet,
                 // закоментировать, чтобы использовать битовое поле
 
 #ifndef USE_SET // Использовать класс TBitField
@@ -22,6 +22,23 @@ int main()
   cout << "             Решето Эратосфена" << endl;
   cout << "Введите верхнюю границу целых значений - ";
   cin  >> n;
+
+  TBitField t(5);
+  ifstream f;
+  f.open("C://Users//User//Desktop//git//mp2-lab1-set//build//fytj.txt");
+  f >> t;
+  f.close();
+  cout << t;
+
+  TBitField u(5);
+  for ( int m = 2; m <= 4; m++)
+	  u.SetBit(m);
+  ofstream p;
+  p.open("C://Users//User//Desktop//git//mp2-lab1-set//build//fyth.txt");
+  p << u;
+  p.close();
+  cout << t;
+
   TBitField s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)
@@ -64,6 +81,22 @@ int main()
   cout << "              Решето Эратосфена" << endl;
   cout << "Введите верхнюю границу целых значений - ";
   cin  >> n;
+
+  TSet u(5);
+  for (int m = 2; m <= 4; m++)
+	  u.InsElem(m);
+  ofstream p;
+  p.open("C://Users//User//Desktop//git//mp2-lab1-set//build//fyths.txt");
+  p << u;
+  p.close();
+
+  TSet t(5);
+  ifstream f;
+  f.open("C://Users//User//Desktop//git//mp2-lab1-set//build//fyths.txt");
+  f >> t;
+  f.close();
+  cout << t;
+
   TSet s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)

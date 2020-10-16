@@ -9,7 +9,7 @@
 #define __BITFIELD_H__
 
 #include <iostream>
-
+#include <fstream>
 using namespace std;
 
 typedef unsigned int TELEM;// тип элемента массива
@@ -45,6 +45,9 @@ public:
 
   friend istream &operator>>(istream &istr, TBitField &bf);       //      (#О7)
   friend ostream &operator<<(ostream &ostr, const TBitField &bf); //      (#П4)
+
+  friend ofstream& operator << (ofstream& ofstr, const TBitField& bf);
+  friend ifstream& operator >> (ifstream& ifstr, TBitField& bf);
 };
 // Структура хранения битового поля
 //   бит.поле - набор битов с номерами от 0 до BitLen

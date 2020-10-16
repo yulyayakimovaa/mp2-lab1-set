@@ -155,29 +155,52 @@ TBitField TBitField::operator~(void) // отрицание
 }
 
 // ввод/вывод
-istream &operator>>(istream &istr, TBitField &bf) // ввод
+istream& operator>>(istream& istr, TBitField& bf) // ввод
 {
-	int i = 0;
-	char ch;
-	do {
-		istr >> ch; 
-	} while (ch != ' ');
-	while (1)
+	string tmp;
+	istr >> tmp;
+	for (int i = 0; i < bf.BitLen; i++)
 	{
-		istr >> ch;
-		if (ch == '0') bf.ClrBit(i++);
+		if (tmp[i] == '0')
+			bf.ClrBit(i);
 		else
-			if (ch == '1') bf.SetBit(i++);
+			if (tmp[i] == '1')
+				bf.SetBit(i);
 			else break;
 	}
 	return istr;
 }
-
-ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
+ostream& operator<<(ostream& ostr, const TBitField& bf) // вывод
 {
 	int len = bf.GetLength();
 	for (int i = 0; i < len; i++)
 		if (bf.GetBit(i)) ostr << '1';
 		else ostr << '0';
 	return ostr;
+}
+// ввод/вывод
+ifstream& operator>>(ifstream& ifstr, TBitField& bf) // ввод
+{
+	string tmp;
+	ifstr >> tmp;
+	cout << tmp << endl;
+	
+	for (int i = 0; i < bf.GetLength(); i++)
+	{
+		if (tmp[i] == '0')
+			bf.ClrBit(i);
+		else
+			if (tmp[i] == '1')
+				bf.SetBit(i);
+			else break;
+	}
+	return ifstr;
+}
+ofstream& operator << (ofstream& ofstr, const TBitField& bf) // вывод
+{
+	int len = bf.GetLength();
+	for (int i = 0; i < len; i++)
+		if (bf.GetBit(i)) ofstr << "1";
+		else ofstr << "0";
+	return ofstr;
 }
